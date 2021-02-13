@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-    pull_request:
-      branches: [master]
-      types: [opened, synchronize]
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   deployment-pipeline:
@@ -38,7 +38,7 @@ jobs:
           healthcheck: "https://cicd-github-actions.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
-
+          
       - uses: actions/checkout@v2
       - name: Bump version and Push tag
         if: ${{ github.event_name == 'push' }}
