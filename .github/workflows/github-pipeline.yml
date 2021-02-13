@@ -63,4 +63,4 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         # condition: contains('${{ github.event.commits.*.message }}', 'test')
-        run: echo "$COMMIT_MESSAGES[0]"
+        run: echo "$contain(COMMIT_MESSAGES, 'test')"
