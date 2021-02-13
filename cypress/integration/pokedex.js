@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe('Pokedex', function() {
   it('front page can be opened', function() {
     cy.visit('http://localhost:5000')
@@ -9,6 +10,5 @@ describe('Pokedex', function() {
     cy.visit('http://localhost:5000')
     cy.contains('charmander').click()
     cy.url('http://localhost:5000/pokemon/charmander')
-    })
-  
+  })
 })
