@@ -63,5 +63,4 @@ jobs:
       - name: commit messages
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          is_test: ${{ github.event.commits.*.message == "skip"}}
-        run: echo "$is_test"
+        run: echo "$COMMIT_MESSAGES"
