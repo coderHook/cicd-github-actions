@@ -12,6 +12,6 @@ jobs:
       - name: Now it is
         run: |
           data -d
-      -name: Directory commands
+      - name: Directory commands
         run: |
           ls -l
