@@ -9,6 +9,10 @@ This repository is made to learn how  to create a CI/CD pipeline with Github Act
     on: action that will trigger thisworkflow
     jobs: steps to be done
 
+Linter: Eslint
+Test: Jest (unit and integration)
+E2E test: Cypress
+
 ## Commands
 
 Start by running `npm install` inside the project folder
