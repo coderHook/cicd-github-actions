@@ -28,5 +28,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "cicd-github-actions" 
+          heroku_app_name: cicd-github-actions
           heroku_email: ${{secrets.HEROKU_EMAIL}}
