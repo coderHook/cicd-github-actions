@@ -15,16 +15,16 @@ jobs:
           node-version: '12.x'
       - name: npn install
         run: npm install
-      - name: linter
-        run: npm run eslint
-      - name: buid & test
-        run: npm run build & npm run test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
+      # - name: linter
+      #   run: npm run eslint
+      # - name: buid & test
+      #   run: npm run build & npm run test
+      # - name: e2e tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     command: npm run test:e2e
+      #     start: npm run start-prod
+      #     wait-on: http://localhost:5000
       - name: deploy to heroku
         if: ${{ github.event_name == 'push' }}
         uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
