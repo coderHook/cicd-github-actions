@@ -34,3 +34,4 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           healthcheck: "https://cicd-github-actions.herokuapp.com/health"
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
