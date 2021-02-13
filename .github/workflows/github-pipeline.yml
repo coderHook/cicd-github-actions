@@ -38,3 +38,8 @@ jobs:
           healthcheck: "https://cicd-github-actions.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - name: Bump version and Push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
