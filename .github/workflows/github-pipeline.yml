@@ -9,40 +9,57 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  deployment-pipeline:
+  # deployment-pipeline:
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '12.x'
+  #     - name: npn install
+  #       run: npm install
+  #     # - name: linter
+      #   run: npm run eslint
+      # - name: buid & test
+      #   run: npm run build & npm run test
+      # - name: e2e tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     command: npm run test:e2e
+      #     start: npm run start-prod
+      #     wait-on: http://localhost:5000
+      # - name: deploy to heroku
+      #   if: ${{ github.event_name == 'push' }}
+      #   uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
+      #   with:
+      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #     heroku_app_name: cicd-github-actions
+      #     heroku_email: ${{secrets.HEROKU_EMAIL}}
+      #     healthcheck: "https://cicd-github-actions.herokuapp.com/health"
+      #     checkstring: "ok"
+      #     rollbackonhealthcheckfailed: true
+          
+      # - uses: actions/checkout@v2
+      # - name: Bump version and Push tag
+      #   if: ${{ github.event_name == 'push' }}
+      #   uses: anothrNick/github-tag-action@1.33.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+      #     DEFAULT_BUMP: patch
+
+  a_test_job:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: npn install
-        run: npm install
-      - name: linter
-        run: npm run eslint
-      - name: buid & test
-        run: npm run build & npm run test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
-      - name: deploy to heroku
-        if: ${{ github.event_name == 'push' }}
-        uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: cicd-github-actions
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          healthcheck: "https://cicd-github-actions.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
-          
-      - uses: actions/checkout@v2
-      - name: Bump version and Push tag
-        if: ${{ github.event_name == 'push' }}
-        uses: anothrNick/github-tag-action@1.33.0
+      - name: gihub context
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-          DEFAULT_BUMP: patch
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: commits
+        env:
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: echo "$COMMITS"
+      - name: commit messages
+        env:
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+        run: echo "$COMMIT_MESSAGES"
