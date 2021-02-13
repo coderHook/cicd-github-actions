@@ -3,6 +3,7 @@
 
 This repository is made to learn how  to create a CI/CD pipeline with Github Actions.
 
+## Structure
 
 ## Commands
 
