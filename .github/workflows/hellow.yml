@@ -9,6 +9,9 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-18.04
     steps:
-      - name: Hellowin!
+      - name: Now it is
         run: |
-          echo "Hello World"
+          data -d
+      -name: Directory commands
+        run: |
+          ls -l
