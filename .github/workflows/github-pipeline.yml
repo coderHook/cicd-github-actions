@@ -33,3 +33,5 @@ jobs:
           heroku_app_name: cicd-github-actions
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           remote_branch: master
+          healthcheck: "https://cicd-github-actions.herokuapp.com/health"
+          checkstring: "ok"
