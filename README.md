@@ -5,6 +5,10 @@ This repository is made to learn how  to create a CI/CD pipeline with Github Act
 
 ## Structure
 
+    name: name of the workflow
+    on: action that will trigger thisworkflow
+    jobs: steps to be done
+
 ## Commands
 
 Start by running `npm install` inside the project folder
