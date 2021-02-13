@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Now it is
         run: |
-          data -d
+          date
       - name: Directory commands
         run: |
           ls -l
