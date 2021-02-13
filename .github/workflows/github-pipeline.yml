@@ -42,7 +42,6 @@ jobs:
   #     - uses: actions/checkout@v2
   #     - name: Bump version and Push tag
   #       if: ${{ github.event_name == 'push' }}
-  #       if: ${{ toJson(github.event.commits.*.message)[0] }}
   #       uses: anothrNick/github-tag-action@1.33.0
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
@@ -63,5 +62,5 @@ jobs:
       - name: commit messages
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-        condition: contains('${{ github.event.commits.*.message }}', 'test')
-        run: echo "$COMMIT_MESSAGES"
+        # condition: contains('${{ github.event.commits.*.message }}', 'test')
+        run: echo "$COMMIT_MESSAGES[0]"
