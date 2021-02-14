@@ -61,22 +61,3 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: always() # Pick up events even if the job fails or is canceled.
-
-  # a_test_condition_job:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: gihub context
-  #       env:
-  #         GITHUB_CONTEXT: ${{ toJson(github) }}
-  #       run: echo "$GITHUB_CONTEXT"
-  #     - name: commits
-  #       env:
-  #         COMMITS: ${{ toJson(github.event.commits) }}
-  #       run: echo "$COMMITS"
-  #     - name: commit messages
-  #       env:
-  #         COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-  #         is_test: contain(github.event.commits.*.message, 'test')
-  #       # condition: contains('${{ github.event.commits.*.message }}', 'test')
-  #       run: echo "$is_test $COMMIT_MESSAGES"
